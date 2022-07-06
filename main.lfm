@@ -1,11 +1,11 @@
 object Form1: TForm1
   Left = 1425
-  Height = 591
+  Height = 414
   Top = 69
-  Width = 921
+  Width = 762
   Caption = 'Form1'
-  ClientHeight = 591
-  ClientWidth = 921
+  ClientHeight = 414
+  ClientWidth = 762
   LCLVersion = '2.0.12.0'
   object Label1: TLabel
     Left = 16
@@ -19,37 +19,281 @@ object Form1: TForm1
   end
   object GrpTriggers: TGroupBox
     Left = 16
-    Height = 520
+    Height = 352
     Top = 48
     Width = 736
     Caption = 'Triggers'
-    ClientHeight = 502
+    ClientHeight = 334
     ClientWidth = 734
     TabOrder = 0
     object GrpTrigger1: TGroupBox
       Left = 16
       Height = 152
-      Top = 16
+      Top = 8
       Width = 129
       Caption = 'Issue 1'
       ClientHeight = 134
       ClientWidth = 127
       TabOrder = 0
-      object Button1: TButton
+      object BtnTrigger1: TButton
         Left = 8
         Height = 96
         Top = 0
         Width = 112
-        Caption = 'Button1'
+        Caption = 'Issue 1'
         TabOrder = 0
       end
-      object Edit1: TEdit
+      object TxtTrigger1: TEdit
         Left = 8
         Height = 33
         Top = 96
         Width = 112
+        OnChange = TxtTrigger1Change
         TabOrder = 1
-        Text = 'Edit1'
+        Text = 'Issue 1'
+      end
+    end
+    object GrpTrigger2: TGroupBox
+      Left = 160
+      Height = 152
+      Top = 8
+      Width = 129
+      Caption = 'Issue 1'
+      ClientHeight = 134
+      ClientWidth = 127
+      TabOrder = 1
+      object BtnTrigger2: TButton
+        Left = 8
+        Height = 96
+        Top = 0
+        Width = 112
+        Caption = 'Issue 1'
+        TabOrder = 0
+      end
+      object TxtTrigger2: TEdit
+        Left = 8
+        Height = 33
+        Top = 96
+        Width = 112
+        OnChange = TxtTrigger2Change
+        TabOrder = 1
+        Text = 'Issue 1'
+      end
+    end
+    object GrpTrigger3: TGroupBox
+      Left = 448
+      Height = 152
+      Top = 8
+      Width = 129
+      Caption = 'Issue 1'
+      ClientHeight = 134
+      ClientWidth = 127
+      TabOrder = 2
+      object BtnTrigger3: TButton
+        Left = 8
+        Height = 96
+        Top = 0
+        Width = 112
+        Caption = 'Issue 1'
+        TabOrder = 0
+      end
+      object TxtTrigger3: TEdit
+        Left = 8
+        Height = 33
+        Top = 96
+        Width = 112
+        OnChange = TxtTrigger3Change
+        TabOrder = 1
+        Text = 'Issue 1'
+      end
+    end
+    object GrpTrigger4: TGroupBox
+      Left = 304
+      Height = 152
+      Top = 8
+      Width = 129
+      Caption = 'Issue 1'
+      ClientHeight = 134
+      ClientWidth = 127
+      TabOrder = 3
+      object BtnTrigger4: TButton
+        Left = 8
+        Height = 96
+        Top = 0
+        Width = 112
+        Caption = 'Issue 1'
+        TabOrder = 0
+      end
+      object TxtTrigger4: TEdit
+        Left = 8
+        Height = 33
+        Top = 96
+        Width = 112
+        OnChange = TxtTrigger4Change
+        TabOrder = 1
+        Text = 'Issue 1'
+      end
+    end
+    object GrpTrigger5: TGroupBox
+      Left = 592
+      Height = 152
+      Top = 8
+      Width = 129
+      Caption = 'Issue 1'
+      ClientHeight = 134
+      ClientWidth = 127
+      TabOrder = 4
+      object BtnTrigger5: TButton
+        Left = 8
+        Height = 96
+        Top = 0
+        Width = 112
+        Caption = 'Issue 1'
+        TabOrder = 0
+      end
+      object TxtTrigger5: TEdit
+        Left = 8
+        Height = 33
+        Top = 96
+        Width = 112
+        OnChange = TxtTrigger5Change
+        TabOrder = 1
+        Text = 'Issue 1'
+      end
+    end
+    object GrpTrigger6: TGroupBox
+      Left = 16
+      Height = 152
+      Top = 168
+      Width = 129
+      Caption = 'Issue 1'
+      ClientHeight = 134
+      ClientWidth = 127
+      TabOrder = 5
+      object BtnTrigger6: TButton
+        Left = 8
+        Height = 96
+        Top = 0
+        Width = 112
+        Caption = 'Issue 1'
+        TabOrder = 0
+      end
+      object TxtTrigger6: TEdit
+        Left = 8
+        Height = 33
+        Top = 96
+        Width = 112
+        OnChange = TxtTrigger6Change
+        TabOrder = 1
+        Text = 'Issue 1'
+      end
+    end
+    object GrpTrigger7: TGroupBox
+      Left = 160
+      Height = 152
+      Top = 168
+      Width = 129
+      Caption = 'Issue 1'
+      ClientHeight = 134
+      ClientWidth = 127
+      TabOrder = 6
+      object BtnTrigger7: TButton
+        Left = 8
+        Height = 96
+        Top = 0
+        Width = 112
+        Caption = 'Issue 1'
+        TabOrder = 0
+      end
+      object TxtTrigger7: TEdit
+        Left = 8
+        Height = 33
+        Top = 96
+        Width = 112
+        OnChange = TxtTrigger7Change
+        TabOrder = 1
+        Text = 'Issue 1'
+      end
+    end
+    object GrpTrigger8: TGroupBox
+      Left = 304
+      Height = 152
+      Top = 168
+      Width = 129
+      Caption = 'Issue 1'
+      ClientHeight = 134
+      ClientWidth = 127
+      TabOrder = 7
+      object BtnTrigger8: TButton
+        Left = 8
+        Height = 96
+        Top = 0
+        Width = 112
+        Caption = 'Issue 1'
+        TabOrder = 0
+      end
+      object TxtTrigger8: TEdit
+        Left = 8
+        Height = 33
+        Top = 96
+        Width = 112
+        OnChange = TxtTrigger8Change
+        TabOrder = 1
+        Text = 'Issue 1'
+      end
+    end
+    object GrpTrigger9: TGroupBox
+      Left = 448
+      Height = 152
+      Top = 168
+      Width = 129
+      Caption = 'Issue 1'
+      ClientHeight = 134
+      ClientWidth = 127
+      TabOrder = 8
+      object BtnTrigger9: TButton
+        Left = 8
+        Height = 96
+        Top = 0
+        Width = 112
+        Caption = 'Issue 1'
+        TabOrder = 0
+      end
+      object TxtTrigger9: TEdit
+        Left = 8
+        Height = 33
+        Top = 96
+        Width = 112
+        OnChange = TxtTrigger9Change
+        TabOrder = 1
+        Text = 'Issue 1'
+      end
+    end
+    object GrpTrigger10: TGroupBox
+      Left = 592
+      Height = 152
+      Top = 168
+      Width = 129
+      Caption = 'Issue 1'
+      ClientHeight = 134
+      ClientWidth = 127
+      TabOrder = 9
+      object BtnTrigger10: TButton
+        Left = 8
+        Height = 96
+        Top = 0
+        Width = 112
+        Caption = 'Issue 1'
+        TabOrder = 0
+      end
+      object TxtTrigger10: TEdit
+        Left = 8
+        Height = 33
+        Top = 96
+        Width = 112
+        OnChange = TxtTrigger10Change
+        TabOrder = 1
+        Text = 'Issue 1'
       end
     end
   end
