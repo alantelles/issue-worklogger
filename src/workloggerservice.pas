@@ -49,6 +49,7 @@ var
   WorklogCsv: TStringList;
   StrDate: string;
   TimeSpentSeconds: integer;
+  SameIssueLast: boolean = false;
 begin
   // issueId;started;timeSpentSeconds
   WorklogPath := TWorkLoggerService.GetTodayWorklogPath;
@@ -58,15 +59,22 @@ begin
     WorklogCsv.LoadFromFile(WorklogPath);
   if WorklogCsv.Count > 0 then
   begin
-    TimeSpentSeconds := Trunc(SecondSpan(
+    SameIssueLast := Copy(WorklogCsv[WorklogCsv.Count - 1], 1, Pos(CSV_SEPARATOR, WorklogCsv[WorklogCsv.Count - 1]) - 1) = issue;
+    if not SameIssueLast then
+    begin
+      TimeSpentSeconds := Trunc(SecondSpan(
                      Now,
                      TWorkloggerService.GetDateStartedFromLine(WorklogCsv[WorklogCsv.Count - 1])
                      ));
-    WorklogCsv[WorklogCsv.Count - 1] := WorklogCsv[WorklogCsv.Count - 1] + IntToStr(TimeSpentSeconds);
+      WorklogCsv[WorklogCsv.Count - 1] := WorklogCsv[WorklogCsv.Count - 1] + IntToStr(TimeSpentSeconds);
+    end;
   end;
-  StrDate := FormatDateTime(DATE_FORMAT, Now);
-  WorklogCsv.Add(issue + CSV_SEPARATOR + StrDate + DATE_FILLER + CSV_SEPARATOR);
-  WorklogCsv.SaveToFile(worklogPath);
+  if not SameIssueLast then
+  begin
+    StrDate := FormatDateTime(DATE_FORMAT, Now);
+    WorklogCsv.Add(issue + CSV_SEPARATOR + StrDate + DATE_FILLER + CSV_SEPARATOR);
+    WorklogCsv.SaveToFile(worklogPath);
+  end;
   WorklogCsv.Free;
 end;
 
