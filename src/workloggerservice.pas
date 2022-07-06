@@ -11,6 +11,7 @@ const
   WORKLOGS_FOLDER = 'worklogs';
   CSV_SEPARATOR = ';';
   DATE_FORMAT = 'yyyy-mm-dd"T"hh:nn:ss.zzz';
+  WORK_PAUSE = 'Work pause';
 
 type
   TWorkloggerService = class

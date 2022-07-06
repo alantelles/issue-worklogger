@@ -1,10 +1,10 @@
 object FrmMain: TFrmMain
   Left = 1425
-  Height = 476
+  Height = 469
   Top = 69
   Width = 762
   Caption = 'Issue Worklogger'
-  ClientHeight = 476
+  ClientHeight = 469
   ClientWidth = 762
   OnShow = FormShow
   LCLVersion = '2.0.12.0'
@@ -314,7 +314,8 @@ object FrmMain: TFrmMain
     Height = 40
     Top = 416
     Width = 112
-    Caption = 'Work pause'
+    Caption = 'Pause'
+    OnClick = OnTriggerClick
     TabOrder = 1
   end
 end

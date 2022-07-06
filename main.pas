@@ -77,8 +77,11 @@ uses
 procedure TFrmMain.FormShow(Sender: TObject);
 var
   Triggers: TIssueTriggers;
+  i: integer;
 begin
   CreateDir(WORKLOGS_FOLDER);
+  BtnSetPause.Caption := WORK_PAUSE;
+
   Triggers[1] := TIssueTrigger.Create(TxtTrigger1, BtnTrigger1, GrpTrigger1);
   Triggers[2] := TIssueTrigger.Create(TxtTrigger2, BtnTrigger2, GrpTrigger2);
   Triggers[3] := TIssueTrigger.Create(TxtTrigger3, BtnTrigger3, GrpTrigger3);
@@ -90,6 +93,8 @@ begin
   Triggers[9] := TIssueTrigger.Create(TxtTrigger9, BtnTrigger9, GrpTrigger9);
   Triggers[10] := TIssueTrigger.Create(TxtTrigger10, BtnTrigger10, GrpTrigger10);
   TTriggerHandlerService.LoadTriggers(Triggers);
+  for i := 1 to MAX_TRIGGERS do
+    Triggers[i].Free;
 end;
 
 procedure TFrmMain.OnTriggerClick(Sender: TObject);
