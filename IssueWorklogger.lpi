@@ -30,7 +30,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="3">
+    <Units Count="4">
       <Unit0>
         <Filename Value="IssueWorklogger.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -47,6 +47,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="TriggerHandlerService"/>
       </Unit2>
+      <Unit3>
+        <Filename Value="src/workloggerservice.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="WorkloggerService"/>
+      </Unit3>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

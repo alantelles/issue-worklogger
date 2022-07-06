@@ -5,7 +5,7 @@ unit main;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Strutils;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls;
 
 type
 
@@ -68,7 +68,7 @@ var
 implementation
 
 uses
-  TriggerHandlerService;
+  TriggerHandlerService, WorkloggerService;
 {$R *.lfm}
 
 { TFrmMain }
@@ -77,6 +77,7 @@ procedure TFrmMain.FormShow(Sender: TObject);
 var
   Triggers: TIssueTriggers;
 begin
+  CreateDir(WORKLOGS_FOLDER);
   Triggers[1] := TIssueTrigger.Create(TxtTrigger1, BtnTrigger1, GrpTrigger1);
   Triggers[2] := TIssueTrigger.Create(TxtTrigger2, BtnTrigger2, GrpTrigger2);
   Triggers[3] := TIssueTrigger.Create(TxtTrigger3, BtnTrigger3, GrpTrigger3);
