@@ -45,6 +45,7 @@ type
     TxtTrigger7: TEdit;
     TxtTrigger8: TEdit;
     TxtTrigger9: TEdit;
+    procedure OnTriggerClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure TxtTrigger1Change(Sender: TObject);
     procedure TxtTrigger2Change(Sender: TObject);
@@ -89,6 +90,14 @@ begin
   Triggers[9] := TIssueTrigger.Create(TxtTrigger9, BtnTrigger9, GrpTrigger9);
   Triggers[10] := TIssueTrigger.Create(TxtTrigger10, BtnTrigger10, GrpTrigger10);
   TTriggerHandlerService.LoadTriggers(Triggers);
+end;
+
+procedure TFrmMain.OnTriggerClick(Sender: TObject);
+var
+  Button: TButton;
+begin
+  Button := Sender as TButton;
+  TWorkloggerService.SaveWorklog(Button.Caption);
 end;
 
 {$INCLUDE 'src/edit_button_trigger_bindings.pp'}

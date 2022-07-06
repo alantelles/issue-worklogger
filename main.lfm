@@ -43,6 +43,7 @@ object FrmMain: TFrmMain
         Top = 0
         Width = 112
         Caption = 'Issue 1'
+        OnClick = OnTriggerClick
         TabOrder = 0
       end
       object TxtTrigger1: TEdit
@@ -70,6 +71,7 @@ object FrmMain: TFrmMain
         Top = 0
         Width = 112
         Caption = 'Issue 1'
+        OnClick = OnTriggerClick
         TabOrder = 0
       end
       object TxtTrigger2: TEdit
@@ -97,6 +99,7 @@ object FrmMain: TFrmMain
         Top = 0
         Width = 112
         Caption = 'Issue 1'
+        OnClick = OnTriggerClick
         TabOrder = 0
       end
       object TxtTrigger3: TEdit
@@ -124,6 +127,7 @@ object FrmMain: TFrmMain
         Top = 0
         Width = 112
         Caption = 'Issue 1'
+        OnClick = OnTriggerClick
         TabOrder = 0
       end
       object TxtTrigger4: TEdit
@@ -151,6 +155,7 @@ object FrmMain: TFrmMain
         Top = 0
         Width = 112
         Caption = 'Issue 1'
+        OnClick = OnTriggerClick
         TabOrder = 0
       end
       object TxtTrigger5: TEdit
@@ -178,6 +183,7 @@ object FrmMain: TFrmMain
         Top = 0
         Width = 112
         Caption = 'Issue 1'
+        OnClick = OnTriggerClick
         TabOrder = 0
       end
       object TxtTrigger6: TEdit
@@ -205,6 +211,7 @@ object FrmMain: TFrmMain
         Top = 0
         Width = 112
         Caption = 'Issue 1'
+        OnClick = OnTriggerClick
         TabOrder = 0
       end
       object TxtTrigger7: TEdit
@@ -232,6 +239,7 @@ object FrmMain: TFrmMain
         Top = 0
         Width = 112
         Caption = 'Issue 1'
+        OnClick = OnTriggerClick
         TabOrder = 0
       end
       object TxtTrigger8: TEdit
@@ -259,6 +267,7 @@ object FrmMain: TFrmMain
         Top = 0
         Width = 112
         Caption = 'Issue 1'
+        OnClick = OnTriggerClick
         TabOrder = 0
       end
       object TxtTrigger9: TEdit
@@ -286,6 +295,7 @@ object FrmMain: TFrmMain
         Top = 0
         Width = 112
         Caption = 'Issue 1'
+        OnClick = OnTriggerClick
         TabOrder = 0
       end
       object TxtTrigger10: TEdit
