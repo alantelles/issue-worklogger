@@ -7,14 +7,11 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Strutils;
 
-const
-  DISABLED_TRIGGER_TEXT = '<disabled>';
-
 type
 
-  { TForm1 }
+  { TFrmMain }
 
-  TForm1 = class(TForm)
+  TFrmMain = class(TForm)
     BtnTrigger1: TButton;
     BtnTrigger10: TButton;
     BtnTrigger2: TButton;
@@ -25,6 +22,7 @@ type
     BtnTrigger7: TButton;
     BtnTrigger8: TButton;
     BtnTrigger9: TButton;
+    BtnSetPause: TButton;
     GrpTrigger10: TGroupBox;
     GrpTrigger2: TGroupBox;
     GrpTrigger3: TGroupBox;
@@ -47,6 +45,7 @@ type
     TxtTrigger7: TEdit;
     TxtTrigger8: TEdit;
     TxtTrigger9: TEdit;
+    procedure FormShow(Sender: TObject);
     procedure TxtTrigger1Change(Sender: TObject);
     procedure TxtTrigger2Change(Sender: TObject);
     procedure TxtTrigger3Change(Sender: TObject);
@@ -63,23 +62,32 @@ type
 
   end;
 
-
-procedure CheckDisablement(Button: TButton);
-
 var
-  Form1: TForm1;
+  FrmMain: TFrmMain;
 
 implementation
 
-uses FileSaveServiceUnit;
-
+uses
+  TriggerHandlerService;
 {$R *.lfm}
 
-{ TForm1 }
+{ TFrmMain }
 
-procedure CheckDisablement(Button: TButton);
+procedure TFrmMain.FormShow(Sender: TObject);
+var
+  Triggers: TIssueTriggers;
 begin
-  Button.Enabled := Button.Caption <> DISABLED_TRIGGER_TEXT;
+  Triggers[1] := TIssueTrigger.Create(TxtTrigger1, BtnTrigger1, GrpTrigger1);
+  Triggers[2] := TIssueTrigger.Create(TxtTrigger2, BtnTrigger2, GrpTrigger2);
+  Triggers[3] := TIssueTrigger.Create(TxtTrigger3, BtnTrigger3, GrpTrigger3);
+  Triggers[4] := TIssueTrigger.Create(TxtTrigger4, BtnTrigger4, GrpTrigger4);
+  Triggers[5] := TIssueTrigger.Create(TxtTrigger5, BtnTrigger5, GrpTrigger5);
+  Triggers[6] := TIssueTrigger.Create(TxtTrigger6, BtnTrigger6, GrpTrigger6);
+  Triggers[7] := TIssueTrigger.Create(TxtTrigger7, BtnTrigger7, GrpTrigger7);
+  Triggers[8] := TIssueTrigger.Create(TxtTrigger8, BtnTrigger8, GrpTrigger8);
+  Triggers[9] := TIssueTrigger.Create(TxtTrigger9, BtnTrigger9, GrpTrigger9);
+  Triggers[10] := TIssueTrigger.Create(TxtTrigger10, BtnTrigger10, GrpTrigger10);
+  TTriggerHandlerService.LoadTriggers(Triggers);
 end;
 
 {$INCLUDE 'src/edit_button_trigger_bindings.pp'}

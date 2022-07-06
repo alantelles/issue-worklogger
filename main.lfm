@@ -1,17 +1,19 @@
-object Form1: TForm1
+object FrmMain: TFrmMain
   Left = 1425
-  Height = 414
+  Height = 476
   Top = 69
   Width = 762
-  Caption = 'Form1'
-  ClientHeight = 414
+  Caption = 'Issue Worklogger'
+  ClientHeight = 476
   ClientWidth = 762
+  OnShow = FormShow
   LCLVersion = '2.0.12.0'
   object Label1: TLabel
     Left = 16
-    Height = 32
+    Height = 40
     Top = 8
     Width = 229
+    AutoSize = False
     Caption = 'Issue Worklogger'
     Font.Height = -29
     ParentColor = False
@@ -20,7 +22,7 @@ object Form1: TForm1
   object GrpTriggers: TGroupBox
     Left = 16
     Height = 352
-    Top = 48
+    Top = 56
     Width = 736
     Caption = 'Triggers'
     ClientHeight = 334
@@ -296,5 +298,13 @@ object Form1: TForm1
         Text = 'Issue 1'
       end
     end
+  end
+  object BtnSetPause: TButton
+    Left = 16
+    Height = 40
+    Top = 416
+    Width = 112
+    Caption = 'Work pause'
+    TabOrder = 1
   end
 end

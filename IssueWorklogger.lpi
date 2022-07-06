@@ -38,14 +38,14 @@
       <Unit1>
         <Filename Value="main.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="Form1"/>
+        <ComponentName Value="FrmMain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit1>
       <Unit2>
-        <Filename Value="src/filesaveserviceunit.pas"/>
+        <Filename Value="src/triggerhandlerservice.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="FileSaveServiceUnit"/>
+        <UnitName Value="TriggerHandlerService"/>
       </Unit2>
     </Units>
   </ProjectOptions>
