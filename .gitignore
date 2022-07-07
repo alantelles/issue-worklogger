@@ -72,5 +72,5 @@ lib/
 *.lps
 
 
-build/IssueWorklogger
-build/worklogs/*
+build/*
+!build/send_worklog.sh
