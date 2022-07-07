@@ -1,8 +1,9 @@
 object FrmMain: TFrmMain
-  Left = 1425
+  Left = 1514
   Height = 469
-  Top = 69
+  Top = 79
   Width = 762
+  BorderStyle = bsSingle
   Caption = 'Issue Worklogger'
   ClientHeight = 469
   ClientWidth = 762
@@ -318,5 +319,14 @@ object FrmMain: TFrmMain
     Caption = 'Pause'
     OnClick = OnTriggerClick
     TabOrder = 1
+  end
+  object BtnShowWorklogs: TButton
+    Left = 584
+    Height = 40
+    Top = 416
+    Width = 168
+    Caption = 'Show worklog list'
+    OnClick = BtnShowWorklogsClick
+    TabOrder = 2
   end
 end

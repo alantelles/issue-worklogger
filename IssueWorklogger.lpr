@@ -7,7 +7,7 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, main;
+  Forms, main, workloglist;
 
 {$R *.res}
 
@@ -16,6 +16,7 @@ begin
   Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(TFrmMain, FrmMain);
+  Application.CreateForm(TFrmLogList, FrmLogList);
   Application.Run;
 end.
 

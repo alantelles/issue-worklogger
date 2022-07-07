@@ -23,6 +23,7 @@ type
     BtnTrigger8: TButton;
     BtnTrigger9: TButton;
     BtnSetPause: TButton;
+    BtnShowWorklogs: TButton;
     GrpTrigger10: TGroupBox;
     GrpTrigger2: TGroupBox;
     GrpTrigger3: TGroupBox;
@@ -45,6 +46,7 @@ type
     TxtTrigger7: TEdit;
     TxtTrigger8: TEdit;
     TxtTrigger9: TEdit;
+    procedure BtnShowWorklogsClick(Sender: TObject);
     procedure OnTriggerClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure TxtTrigger1Change(Sender: TObject);
@@ -69,7 +71,7 @@ var
 implementation
 
 uses
-  TriggerHandlerService, WorkloggerService;
+  TriggerHandlerService, WorkloggerService, WorklogList;
 {$R *.lfm}
 
 { TFrmMain }
@@ -103,6 +105,11 @@ var
 begin
   Button := Sender as TButton;
   TWorkloggerService.SaveWorklog(Button.Caption);
+end;
+
+procedure TFrmMain.BtnShowWorklogsClick(Sender: TObject);
+begin
+  FrmLogList.Show;
 end;
 
 {$INCLUDE 'src/edit_button_trigger_bindings.pp'}
