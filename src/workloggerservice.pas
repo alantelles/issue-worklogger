@@ -12,6 +12,7 @@ const
   CSV_SEPARATOR = ';';
   DATE_FORMAT = 'yyyy-mm-dd"T"hh:nn:ss.zzz';
   WORK_PAUSE = 'Work pause';
+  SEND_WORKLOG_SCRIPT_NAME = 'send_worklog.sh';
 
   // Statuses
   NOW_WORKING = 'Now working';
@@ -27,11 +28,12 @@ type
       class procedure SaveWorklog(issue: string);
       class function GetDateStartedFromLine(Line: string): TDateTime;
       class function GetFinishedLastIssue(Line: string): string;
+      class function SendWorklogToManager(Issue: string; startedAt: string; timeSpent: string): boolean;
   end;
 
 implementation
 uses
-  DateUtils, StrUtils;
+  DateUtils, StrUtils, Process;
 
 class function TWorkloggerService.GetFinishedLastIssue(Line: string): string;
 var
@@ -97,6 +99,33 @@ begin
     WorklogCsv.SaveToFile(worklogPath);
   end;
   WorklogCsv.Free;
+end;
+
+class function TWorkLoggerService.SendWorklogToManager(Issue: string; startedAt: string; timeSpent: string): boolean;
+var
+  AProcess: TProcess;
+  AOutput: TStringList;
+  Successfully: boolean = False;
+  Response: string;
+begin
+  AProcess := TProcess.Create(nil);
+  AProcess.Options := AProcess.Options + [poWaitOnExit, poUsePipes];
+  AProcess.Executable := SEND_WORKLOG_SCRIPT_NAME;
+  Aprocess.Parameters.Add(Issue);
+  Aprocess.Parameters.Add(startedAt);
+  Aprocess.Parameters.Add(timeSpent);
+  Aprocess.Execute;
+  AOutput := TStringList.Create;
+  AOutput.SkipLastLineBreak := True;
+  AOutput.LoadFromStream(AProcess.Output);
+  Response := Trim(AOutput.Text);
+  AOutput.Free;
+  if (Response[1] = '2') and (Length(Response) = 3) then
+  begin
+    successfully := true;
+  end;
+  AProcess.Free;
+  Result := Successfully;
 end;
 
 end.

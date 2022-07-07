@@ -68,7 +68,8 @@ begin
   begin
     for i:= 1 to logs - 1 do
     begin
-      if (SGrid.Cells[2, i] = FINISHED) or (SGrid.Cells[2, i] = ERROR_ON_SENDING) then
+      if (SGrid.Cells[0, i] <> WORK_PAUSE) and
+         ((SGrid.Cells[2, i] = FINISHED) or (SGrid.Cells[2, i] = ERROR_ON_SENDING)) then
       begin
         SendWorklog(
           SGrid.Cells[0, i], // issue
@@ -87,8 +88,7 @@ end;
 procedure SendWorklog(issue: string; startedAt: string; TimeSpent: string);
 begin
   FrmLogList.StatusBar1.SimpleText := 'Sending: ' + issue + '/' + startedAt + '/' + TimeSpent;
-  Application.ProcessMessages;
-  sleep(2000);
+  TWorkloggerService.SendWorklogToManager(issue, startedAt, timespent);
 end;
 
 end.
