@@ -61,4 +61,13 @@ object FrmLogList: TFrmLogList
     Width = 776
     Panels = <>
   end
+  object BtnReloadWorklogs: TButton
+    Left = 16
+    Height = 40
+    Top = 400
+    Width = 147
+    Caption = 'Reload worklogs'
+    OnClick = FormShow
+    TabOrder = 3
+  end
 end
