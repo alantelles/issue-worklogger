@@ -20,7 +20,7 @@ object FrmLogList: TFrmLogList
     ColCount = 4
     Columns = <    
       item
-        ReadOnly = True
+        ReadOnly = False
         Title.Caption = 'Issue'
         Width = 150
       end    
@@ -30,18 +30,18 @@ object FrmLogList: TFrmLogList
         Width = 230
       end    
       item
-        ReadOnly = True
+        ReadOnly = False
         Title.Caption = 'Status'
         Width = 200
       end    
       item
-        ReadOnly = True
+        ReadOnly = False
         Title.Caption = 'Time spent (seconds)'
         Width = 155
       end>
     ExtendedSelect = False
     FixedCols = 0
-    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect, goSmoothScroll, goCellEllipsis]
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goEditing, goSmoothScroll, goCellEllipsis]
     RowCount = 1
     ScrollBars = ssVertical
     TabOrder = 0
