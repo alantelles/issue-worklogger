@@ -124,7 +124,9 @@ begin
           SGrid.Cells[2, i] := ERROR_ON_SENDING;
           errorsOnSend := errorsOnsend + 1;
         end;
-        Sgrid.SaveToCSVFile(TWorkloggerService.GetTodayWorklogPath, CSV_SEPARATOR, False, True);
+        Sgrid.SaveToCSVFile(TWorkloggerService.GetWorklogPath(
+            FormatDateTime(WORKLOG_DATE_FORMAT, SelectedWorklogDate)),
+          CSV_SEPARATOR, False, True);
         Sleep(10);
       end;
 
