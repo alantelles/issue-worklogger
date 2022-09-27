@@ -5,12 +5,13 @@ unit WorkloggerService;
 interface
 
 uses
-  Classes, SysUtils;
+  Classes, SysUtils, Grids;
 
 const
   WORKLOGS_FOLDER = 'worklogs';
   CSV_SEPARATOR = ';';
   DATE_FORMAT = 'yyyy-mm-dd"T"hh:nn:ss.zzz';
+  WORKLOG_DATE_FORMAT = 'yyyy-mm-dd';
   WORK_PAUSE = 'Work pause';
   SEND_WORKLOG_SCRIPT_NAME = 'send_worklog.sh';
 
@@ -25,6 +26,8 @@ type
   TWorkloggerService = class
     public
       class function GetTodayWorklogPath: string;
+      class function GetWorklogPath(DateStr: string): string;
+      class procedure LoadDailyWorklog(Table: TStringGrid; Path: string);
       class procedure SaveWorklog(issue: string);
       class function GetDateStartedFromLine(Line: string): TDateTime;
       class function GetFinishedLastIssue(Line: string): string;
@@ -49,11 +52,22 @@ begin
   Result := LinePart + FINISHED + CSV_SEPARATOR + IntToStr(TimeSpentSeconds);
 end;
 
+class procedure TWorkloggerService.LoadDailyWorklog(Table: TStringGrid; Path: string);
+begin
+  Table.LoadFromCSVFile(Path, CSV_SEPARATOR, false, 0);
+  if Table.ColCount > 3 then
+    Table.Columns.Items[3].Title.Caption := 'Time spent (seconds)';
+end;
+
 class function TWorkloggerService.GetTodayWorklogPath: string;
 const
-  FORMAT = 'yyyy-mm-dd';
+  FORMAT = WORKLOG_DATE_FORMAT;
 begin
-  Result := WORKLOGS_FOLDER + DirectorySeparator + FormatDateTime(FORMAT, Date) + '.csv';
+  Result := TWorkloggerService.GetWorklogPath(FormatDateTime(FORMAT, Date));
+end;
+class function TWorkloggerService.GetWorklogPath(DateStr: string): string;
+begin
+  Result := WORKLOGS_FOLDER + DirectorySeparator + DateStr + '.csv';
 end;
 
 class function TWorkloggerService.GetDateStartedFromLine(Line: string): TDateTime;

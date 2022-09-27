@@ -1,11 +1,11 @@
 object FrmLogList: TFrmLogList
-  Left = 1442
-  Height = 474
-  Top = 130
+  Left = 714
+  Height = 499
+  Top = 219
   Width = 776
   BorderStyle = bsSingle
   Caption = 'Worklogs'
-  ClientHeight = 474
+  ClientHeight = 499
   ClientWidth = 776
   OnShow = FormShow
   Position = poScreenCenter
@@ -14,13 +14,13 @@ object FrmLogList: TFrmLogList
     Cursor = crHandPoint
     Left = 16
     Height = 376
-    Top = 16
+    Top = 48
     Width = 744
     AutoEdit = False
     ColCount = 4
     Columns = <    
       item
-        ReadOnly = True
+        ReadOnly = False
         Title.Caption = 'Issue'
         Width = 150
       end    
@@ -30,25 +30,26 @@ object FrmLogList: TFrmLogList
         Width = 230
       end    
       item
-        ReadOnly = True
+        ReadOnly = False
         Title.Caption = 'Status'
         Width = 200
       end    
       item
-        ReadOnly = True
+        ReadOnly = False
         Title.Caption = 'Time spent (seconds)'
         Width = 155
       end>
     ExtendedSelect = False
     FixedCols = 0
-    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect, goSmoothScroll, goCellEllipsis]
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goEditing, goSmoothScroll, goCellEllipsis]
+    RowCount = 1
     ScrollBars = ssVertical
     TabOrder = 0
   end
   object BtnSendWorklogs: TButton
     Left = 616
     Height = 40
-    Top = 400
+    Top = 432
     Width = 144
     Caption = 'Send worklogs'
     OnClick = BtnSendWorklogsClick
@@ -57,17 +58,50 @@ object FrmLogList: TFrmLogList
   object StatusBar1: TStatusBar
     Left = 0
     Height = 18
-    Top = 456
+    Top = 481
     Width = 776
     Panels = <>
   end
   object BtnReloadWorklogs: TButton
     Left = 16
     Height = 40
-    Top = 400
+    Top = 432
     Width = 147
     Caption = 'Reload worklogs'
     OnClick = FormShow
     TabOrder = 3
+  end
+  object BtnOpenWorklog: TButton
+    Left = 168
+    Height = 40
+    Top = 432
+    Width = 179
+    Caption = 'Open daily worklog'
+    OnClick = BtnOpenWorklogClick
+    TabOrder = 4
+  end
+  object Label1: TLabel
+    Left = 16
+    Height = 15
+    Top = 16
+    Width = 74
+    Caption = 'Work date:'
+    ParentColor = False
+  end
+  object LblWorkDate: TLabel
+    Left = 96
+    Height = 24
+    Top = 16
+    Width = 152
+    AutoSize = False
+    Caption = 'Today'
+    ParentColor = False
+  end
+  object CalSelectWorklog: TCalendarDialog
+    Date = 44830
+    OKCaption = '&OK'
+    CancelCaption = 'Cancel'
+    Left = 384
+    Top = 432
   end
 end

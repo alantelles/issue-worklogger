@@ -6,17 +6,22 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Grids, StdCtrls,
-  ComCtrls;
+  ComCtrls, ExtDlgs;
 
 type
 
   { TFrmLogList }
 
   TFrmLogList = class(TForm)
+    BtnOpenWorklog: TButton;
     BtnSendWorklogs: TButton;
     BtnReloadWorklogs: TButton;
+    CalSelectWorklog: TCalendarDialog;
+    Label1: TLabel;
+    LblWorkDate: TLabel;
     SgrWorklogList: TStringGrid;
     StatusBar1: TStatusBar;
+    procedure BtnOpenWorklogClick(Sender: TObject);
     procedure BtnSendWorklogsClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
@@ -27,8 +32,10 @@ type
 
 var
   FrmLogList: TFrmLogList;
+  SelectedWorklogDate: TDateTime;
 
 procedure SendWorklogs(SGrid: TStringGrid);
+procedure SetDateLabel(ALabel: TLabel; DateStr: string);
 function SendWorklog(issue: string; startedAt: string; TimeSpent: string): boolean;
 
 implementation
@@ -42,14 +49,11 @@ uses
 
 procedure TFrmLogList.FormShow(Sender: TObject);
 begin
+  SelectedWorklogDate := Now;
+  SetDateLabel(LblWorkDate, FormatDateTime(WORKLOG_DATE_FORMAT, SelectedWorkLogDate));
   StatusBar1.SimpleText := 'Ready';
   if FileExists(TWorkloggerService.GetTodayWorklogPath) then
-    SgrWorklogList.LoadFromCSVFile(TWorkloggerService.GetTodayWorklogPath, CSV_SEPARATOR, false, 0, true)
-  else
-  begin
-    ShowMessage('No worklogs registered today');
-    FrmLogList.Hide;
-  end;
+    SgrWorklogList.LoadFromCSVFile(TWorkloggerService.GetTodayWorklogPath, CSV_SEPARATOR, false, 0, true);
 end;
 
 procedure TFrmLogList.BtnSendWorklogsClick(Sender: TObject);
@@ -59,6 +63,33 @@ begin
   SendWorklogs(SgrWorklogList);
   BtnSendWorklogs.Enabled := True;
   BtnSendWorklogs.Caption := 'Send worklogs';
+end;
+
+procedure TFrmLogList.BtnOpenWorklogClick(Sender: TObject);
+var
+  WorklogFile, SelectedDate: string;
+begin
+  if CalSelectWorklog.Execute then
+  begin
+    SelectedWorkLogDate := CalSelectWorklog.Date;
+    SelectedDate := FormatDateTime(WORKLOG_DATE_FORMAT, SelectedWorklogDate);
+    WorklogFile := TWorkloggerService.GetWorklogPath(SelectedDate);
+    if not FileExists(WorklogFile) then
+    begin
+      ShowMessage('No worklog registered for this date');
+      Exit;
+    end;
+    TWorkloggerService.LoadDailyWorklog(SgrWorklogList, WorklogFile);
+    SetDateLabel(LblWorkDate, SelectedDate);
+  end;
+end;
+
+procedure SetDateLabel(ALabel: TLabel; DateStr: string);
+begin
+  if (FormatDateTime(WORKLOG_DATE_FORMAT, Date) = DateStr) then
+    ALabel.Caption := 'Today'
+  else
+    ALabel.Caption := DateStr;
 end;
 
 procedure SendWorklogs(Sgrid: TStringGrid);
